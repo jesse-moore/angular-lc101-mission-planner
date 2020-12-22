@@ -12,8 +12,8 @@ h3 {
   background-color: rgba(0, 0, 100, 0.15);
   margin: 0 20px;
   padding: 15px;
-  height: 175px;
-  width: 250px;
+  min-height: 175px;
+  width: 300px;
   border-radius: 5px;
 }
 
