@@ -1,6 +1,24 @@
-<h3>Experiments</h3>
-<ul>
-  <li>Mars soil sample</li>
-  <li>Plant growth in habitat</li>
-  <li>Human bone density</li>
-</ul>
+<div class="card">
+  <h3>Experiments</h3>
+  <ul>
+    <li *ngFor="let item of experiments">
+      <span *ngIf="itemBeingEdited !== item; else elseBlock">
+        <!-- display state of item -->
+        <span (click)="edit(item)" class="editable-text">{{ item }}</span>
+        <button (click)="remove(item)">remove</button>
+      </span>
+
+      <ng-template #elseBlock>
+        <!-- edit state of item -->
+        <input
+          #updatedName
+          (keyup.enter)="save(updatedName.value, item)"
+          value="{{ item }}"
+        />
+        <button (click)="save(updatedName.value, item)">save</button>
+      </ng-template>
+    </li>
+  </ul>
+  Name: <input #name type="text" />
+  <button (click)="add(name.value); name.value = ''">Add</button>
+</div>
